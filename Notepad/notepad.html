@@ -1,0 +1,37 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notepad</title>
+    <link rel="stylesheet" href="notedpad.css">
+</head>
+<body>
+    <div class="notepad">
+        <h1> Notepad</h1>
+        <textarea id="textArea" placeholder="start typing..."></textarea> 
+        <button onclick="saveText()">Save</button>
+        <button onclick="clearText()">Clear</button>
+    </div>
+    <script>
+        function saveText() {
+            const text = document.getElementById('textArea').value;
+            localStorage.setItem('notepadText', text);
+            alert('Text saved!');
+        }
+
+        function clearText() {
+            document.getElementById('textArea').value = '';
+            localStorage.removeItem('notepadText');
+            alert('Text cleared!');
+        }
+
+        // Load saved text on page load
+        const savedText = localStorage.getItem('notepadText');
+        if (savedText) {
+            document.getElementById('textArea').value = savedText;
+        }
+    </script>
+</body>
+</html> 
+
